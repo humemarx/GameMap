@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_view"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="start"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="?attr/colorPrimary">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_first"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_first" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_scorecheck"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_score" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_gamenews"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_news" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_gamevideo"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_video" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_myhero"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_hero" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/action_settings"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_setting" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_quit"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_quit" />
+</LinearLayout>

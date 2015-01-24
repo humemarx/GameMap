@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">游戏手册</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">设置</string>
+    <string name="drawer_open">打开</string>
+    <string name="drawer_close">关闭</string>
+    <string name="text_title">游戏手册</string>
+    <string name="text_dota2">DOTA2</string>
+    <string name="menu_name">主菜单</string>
+    <string name="menu_mygame">我的游戏</string>
+    <string name="menu_first">首页</string>
+    <string name="menu_scorecheck">积分查询</string>
+    <string name="menu_gamenews">游戏资讯</string>
+    <string name="menu_gamevideo">视频直播</string>
+    <string name="menu_myhero">我的英雄</string>
+    <string name="menu_quit">退出</string>
+</resources>

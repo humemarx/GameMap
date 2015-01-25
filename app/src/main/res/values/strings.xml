@@ -10,10 +10,84 @@
     <string name="text_dota2">DOTA2</string>
     <string name="menu_name">主菜单</string>
     <string name="menu_mygame">我的游戏</string>
-    <string name="menu_first">首页</string>
+    <string name="menu_first">今日英雄</string>
+    <string name="menu_dota2">DOTA2数据</string>
+    <string name="menu_lol">LOL数据</string>
     <string name="menu_scorecheck">积分查询</string>
     <string name="menu_gamenews">游戏资讯</string>
     <string name="menu_gamevideo">视频直播</string>
     <string name="menu_myhero">我的英雄</string>
     <string name="menu_quit">退出</string>
+
+    <!-- Activity title -->
+    <string name="title_activity_items_detail">物品详细</string>
+    <string name="title_activity_hero_detail">英雄详细</string>
+    <string name="title_activity_about">关于</string>
+
+    <!-- Main Activity ActionBar Tab -->
+    <string name="main_actionBar_tab_hero">英雄</string>
+    <string name="main_actionBar_tab_item">物品</string>
+    <string name="main_actionBar_tab_skill">技巧</string>
+    <string name="main_actionBar_tab_favorite">收藏</string>
+
+    <!-- herodetail -->
+    <string name="herodetail_introduce">基本介绍</string>
+    <string name="herodetail_skill">技能加点</string>
+    <string name="herodetail_items">出装推荐</string>
+    <string name="herodetail_tips">使用技巧</string>
+    <string name="herodetail_video">教学视频</string>
+    <!-- menu -->
+    <string name="menu_hero_role">按定位</string>
+    <string name="menu_hero_attack">按攻击</string>
+    <string name="menu_hero_factions">按阵营</string>
+    <string name="menu_hero_type">按类型</string>
+    <string name="menu_hero_statsall">排序</string>
+    <string name="menu_items_qual">按品质</string>
+    <string name="menu_items_itemcat">按分类</string>
+    <string name="menu_addfavorite">添加到收藏</string>
+    <string name="menu_removefavorite">从收藏中删除</string>
+
+    <!-- view txt -->
+    <string name="text_items_repice_name">合成卷轴</string>
+    <string name="text_items_mana_label">魔法消耗:</string>
+    <string name="text_items_cd_label">冷却时间:</string>
+    <string name="text_items_components_label">合成所需物品:</string>
+    <string name="text_items_tocomponents_label">可合成物品:</string>
+    <string name="text_items_toheros_label">推荐英雄使用:</string>
+    <string name="text_hero_abilities_label">技能:</string>
+    <string name="text_hero_itembuilds_starting_label">出门装备:</string>
+    <string name="text_hero_itembuilds_early_label">前期装备:</string>
+    <string name="text_hero_itembuilds_core_label">核心装备:</string>
+    <string name="text_hero_itembuilds_luxury_label">后期神装:</string>
+    <string name="text_hero_skillup_label">技能加点:</string>
+    <string name="text_hero_stats_demo_label">智力</string>
+    <string name="text_hero_stats_int_label">智力</string>
+    <string name="text_hero_stats_agi_label">敏捷</string>
+    <string name="text_hero_stats_str_label">力量</string>
+    <string name="text_hero_stats_dmg_label">攻击</string>
+    <string name="text_hero_stats_ms_label">移速</string>
+    <string name="text_hero_stats_armor_label">护甲</string>
+    <string name="text_hero_stats_demo_value">21 + 2.80</string>
+    <string name="text_division_label">/</string>
+    <string name="text_favorite_emptylist">暂无收藏…</string>
+    <string name="text_video">超神敌法师的逆袭</string>
+
+    <string-array name="array_hero_stats">
+        <item>智力</item>
+        <item>敏捷</item>
+        <item>力量</item>
+        <item>伤害</item>
+        <item>移速</item>
+        <item>护甲</item>
+    </string-array>
+    <string-array name="array_hero_detailstats">
+        <item>等级</item>
+        <item>生命值</item>
+        <item>魔法值</item>
+        <item>攻击力</item>
+        <item>护甲</item>
+        <item>视野范围</item>
+        <item>攻击范围</item>
+        <item>弹道速度</item>
+    </string-array>
 </resources>

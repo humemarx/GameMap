@@ -3,6 +3,7 @@ package com.hume.gamemap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,19 +20,23 @@ import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hume.gamemap.Fragment_View.SuperAwesomeCardFragment;
 import com.hume.gamemap.MenuClass.PagerSlidingTabStrip;
 import com.hume.gamemap.MenuClass.SlideMenu;
 
+import java.io.InputStream;
+
 /**启动主界面
  * Created by tcp on 2015/1/23.
  */
-public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuItemClickListener{
+public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuItemClickListener,View.OnClickListener{
     private SlideMenu slideMenu;
     private ImageView dota_image,lol_image;
     private DrawerLayout mDrawerLayout;
@@ -41,46 +46,89 @@ public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuIte
     private Toolbar mtoolbar;
     private ShareActionProvider mShareActionProvider;
     private LinearLayout mslider;
+    private static int first_color;
+    private TextView text_frist,text_dota,text_lol,text_score,text_video,text_news,text_set,text_myhero,text_quit;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_main);
+        first_color = R.drawable.dota06;
         initviews();
     }
 
     private void initviews() {
-        mtoolbar = (Toolbar)findViewById(R.id.toolbar);
-        mtoolbar.setTitle("首页");
+        mtoolbar = (Toolbar)findViewById(R.id.toolbar);//标题栏
+        mslider = (LinearLayout)findViewById(R.id.drawer_view);//侧边栏
+        text_frist = (TextView)findViewById(R.id.text_menu_first);//首页
+        text_score = (TextView)findViewById(R.id.text_menu_score);//分数查询
+        text_dota = (TextView)findViewById(R.id.text_menu_dota);//dota数据库
+        text_lol = (TextView)findViewById(R.id.text_menu_lol);//lol数据库
+        text_myhero = (TextView)findViewById(R.id.text_menu_hero);//我的英雄
+        text_news = (TextView)findViewById(R.id.text_menu_news);//新闻资讯
+        text_video = (TextView)findViewById(R.id.text_menu_video);//视频直播
+        text_set = (TextView)findViewById(R.id.text_menu_setting);//设置
+        text_quit = (TextView)findViewById(R.id.text_menu_quit);//退出
+
+        mtoolbar.setTitle("今日英雄");
         setSupportActionBar(mtoolbar);
 
         /*设置监听*/
         mtoolbar.setOnMenuItemClickListener(this);
+        /*设置监听*/
+        mtoolbar.setOnMenuItemClickListener(this);
+        text_frist.setOnClickListener(this);
+        text_dota.setOnClickListener(this);
+        text_lol.setOnClickListener(this);
+        text_score.setOnClickListener(this);
+        text_myhero.setOnClickListener(this);
+        text_video.setOnClickListener(this);
+        text_set.setOnClickListener(this);
+        text_quit.setOnClickListener(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /*设置颜色*/
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        InputStream is = getResources().openRawResource(first_color);
+        Bitmap bitmap = BitmapFactory.decodeStream(is, null, opt);
+        Palette.generateAsync(bitmap, new Palette.PaletteAsyncListener(){
+                    @Override
+                    public void onGenerated(Palette palette){
+                        Palette.Swatch vibrant = palette.getVibrantSwatch();
+                        mtoolbar.setBackgroundColor(colorBurn(vibrant.getRgb()));
+                        mslider.setBackgroundColor(vibrant.getRgb());
+                        if (android.os.Build.VERSION.SDK_INT >= 21) {
+                            Window window = getWindow();
+                            // 很明显，这两货是新API才有的。
+                            window.setStatusBarColor(colorBurn(vibrant.getRgb()));
+                            window.setNavigationBarColor(colorBurn(vibrant.getRgb()));
+                        }
+                    }
+                });
 
 		/* findView */
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mtoolbar, R.string.drawer_open,R.string.drawer_close);
         mDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mslider = (LinearLayout)findViewById(R.id.drawer_view);//侧边栏
 
-        mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-        mPagerSlidingTabStrip.setViewPager(mViewPager);
-        mPagerSlidingTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageSelected(int arg0) {
-                colorChange(arg0);
-            }
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-            }
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-            }
-        });
-        initTabsValue();
+//        mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+//        mViewPager = (ViewPager) findViewById(R.id.pager);
+//        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+//        mPagerSlidingTabStrip.setViewPager(mViewPager);
+//        mPagerSlidingTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageSelected(int arg0) {
+//                colorChange(arg0);
+//            }
+//            @Override
+//            public void onPageScrolled(int arg0, float arg1, int arg2) {
+//            }
+//            @Override
+//            public void onPageScrollStateChanged(int arg0) {
+//            }
+//        });
+//        initTabsValue();
     }
     /**
      * mPagerSlidingTabStrip默认值配置
@@ -173,6 +221,35 @@ public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuIte
         }
         return true;
     }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.text_menu_first:
+                Intent intent01 = new Intent(this,MainActivity.class);
+                startActivity(intent01);
+                this.finish();
+                break;
+            case R.id.text_menu_score:
+                break;
+            case R.id.text_menu_dota:
+                Intent intent02 = new Intent(this,MainDotaActivity.class);
+                startActivity(intent02);
+                this.finish();
+            case R.id.text_menu_lol:
+                break;
+            case R.id.text_menu_hero:
+                break;
+            case R.id.text_menu_video:
+                break;
+            case R.id.text_menu_setting:
+                break;
+            case R.id.text_menu_quit:
+                this.finish();
+                break;
+            default:
+                break;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -217,6 +294,5 @@ public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuIte
         public Fragment getItem(int position) {
             return SuperAwesomeCardFragment.newInstance(position);
         }
-
     }
 }

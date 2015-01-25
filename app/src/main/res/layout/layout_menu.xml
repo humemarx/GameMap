@@ -41,6 +41,32 @@
         android:drawableLeft="@drawable/ic_category_mark"
         android:drawablePadding="1.0dip"
         android:gravity="center_vertical"
+        android:text="@string/menu_dota2"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_dota" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
+        android:text="@string/menu_lol"
+        android:textColor="#ffffffff"
+        android:textSize="16.0sp"
+        android:id="@+id/text_menu_lol" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/selector_category_item"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_category_mark"
+        android:drawablePadding="1.0dip"
+        android:gravity="center_vertical"
         android:text="@string/menu_gamenews"
         android:textColor="#ffffffff"
         android:textSize="16.0sp"

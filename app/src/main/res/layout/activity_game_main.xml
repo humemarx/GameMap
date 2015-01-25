@@ -13,17 +13,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
-            <com.hume.gamemap.MenuClass.PagerSlidingTabStrip
-                android:id="@+id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="48dip" >
-            </com.hume.gamemap.MenuClass.PagerSlidingTabStrip>
-            <android.support.v4.view.ViewPager
-                android:id="@+id/pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-            </android.support.v4.view.ViewPager>
+            android:orientation="vertical"
+            android:background="@drawable/dota06">
+
+            <!--<com.hume.gamemap.MenuClass.PagerSlidingTabStrip-->
+                <!--android:id="@+id/tabs"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="48dip" >-->
+            <!--</com.hume.gamemap.MenuClass.PagerSlidingTabStrip>-->
+            <!--<android.support.v4.view.ViewPager-->
+                <!--android:id="@+id/pager"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" >-->
+            <!--</android.support.v4.view.ViewPager>-->
+
         </LinearLayout>
 
         <!-- 侧滑菜单内容 -->

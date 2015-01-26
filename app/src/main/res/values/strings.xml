@@ -71,6 +71,7 @@
     <string name="text_division_label">/</string>
     <string name="text_favorite_emptylist">暂无收藏…</string>
     <string name="text_video">超神敌法师的逆袭</string>
+    <string name="text_video_hiden">[收起]</string>
 
     <string-array name="array_hero_stats">
         <item>智力</item>

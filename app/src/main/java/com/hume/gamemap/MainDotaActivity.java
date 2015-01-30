@@ -12,11 +12,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,10 +29,10 @@ import com.hume.gamemap.Adapter.HeroItem;
 import com.hume.gamemap.Adapter.ItemsImagesAdapter;
 import com.hume.gamemap.Adapter.ItemsItem;
 import com.hume.gamemap.Adapter.MyViewPagerAdapter;
+import com.hume.gamemap.Fragment_View.MyViewPager;
 import com.hume.gamemap.MenuClass.PagerSlidingTabStrip;
 
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -47,7 +49,7 @@ public class MainDotaActivity extends ActionBarActivity implements Toolbar.OnMen
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private PagerSlidingTabStrip mPagerSlidingTabStrip;
-    private ViewPager mViewPager;
+    private MyViewPager mViewPager;
     private List<View>viewList = new ArrayList<>();// 分页视图
     private List<String>titleList = new ArrayList<>();//分页标题
     private DataManager dataManager = new DataManager();
@@ -120,23 +122,43 @@ public class MainDotaActivity extends ActionBarActivity implements Toolbar.OnMen
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         LayoutInflater inflater = getLayoutInflater();
-        final HeroImagesAdapter heroadapter = new HeroImagesAdapter(MainDotaActivity.this, mHeroList);
-        final ItemsImagesAdapter itemadapter = new ItemsImagesAdapter(MainDotaActivity.this, mItemList);
         View view1 = inflater.inflate(R.layout.grid_hero_view, null);//载入英雄界面布局
         View view2 = inflater.inflate(R.layout.grid_item_view, null);//载入物品界面布局
+        viewList.add(view1);
+        viewList.add(view2);
+
+        HeroImagesAdapter heroadapter = new HeroImagesAdapter(MainDotaActivity.this, mHeroList);
+        ItemsImagesAdapter itemadapter = new ItemsImagesAdapter(MainDotaActivity.this, mItemList);
         GridView gridview1 = (GridView)view1.findViewById(R.id.herodata_grid);
         GridView gridview2 = (GridView)view2.findViewById(R.id.itemsdata_grid);
         gridview1.setAdapter(heroadapter);
         gridview2.setAdapter(itemadapter);
-        viewList.add(gridview1);
-        viewList.add(gridview2);
+        /*设置监听*/
+        gridview1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainDotaActivity.this,HeroDetailActivity.class);//跳转英雄详细界面
+                intent.putExtra("heroitem",mHeroList.get(position).keyName);//传递数据
+                startActivity(intent);//启动新的活动
+            }
+        });
+        gridview2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainDotaActivity.this,ItemsDetailActivity.class);//跳转物品详细界面
+                intent.putExtra(ItemsDetailActivity.KEY_ITEMS_DETAIL_KEY_NAME,mItemList.get(position).keyName);//传递数据,该名称
+                if (!TextUtils.isEmpty(mItemList.get(position).parent_keyName)) {
+                    intent.putExtra(ItemsDetailActivity.KEY_ITEMS_DETAIL_PARENT_KEY_NAME,mItemList.get(position).parent_keyName);//合成名称
+                }
+                startActivity(intent);//启动新的活动
+            }
+        });
+
         titleList.add("英雄");
         titleList.add("物品");
-
         mPagerSlidingTabStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs_dota);
-        mViewPager = (ViewPager) findViewById(R.id.pager_dota);
+        mViewPager = (MyViewPager) findViewById(R.id.pager_dota);
         mViewPager.setAdapter(new MyViewPagerAdapter(viewList,titleList));
-        //mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mPagerSlidingTabStrip.setViewPager(mViewPager);
         mPagerSlidingTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -158,10 +180,10 @@ public class MainDotaActivity extends ActionBarActivity implements Toolbar.OnMen
     public boolean onMenuItemClick(MenuItem item){
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Toast.makeText(MainDotaActivity.this, "action_settings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "action_settings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_share:
-                Toast.makeText(MainDotaActivity.this, "action_share",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "action_share",Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;

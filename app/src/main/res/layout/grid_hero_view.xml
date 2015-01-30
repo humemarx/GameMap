@@ -9,5 +9,6 @@
     android:numColumns="auto_fit"
     android:padding="@dimen/margins_text4"
     android:stretchMode="columnWidth"
-    android:background="@drawable/dota06">
+    android:background="@drawable/dota06"
+    android:clickable="true">
 </GridView>

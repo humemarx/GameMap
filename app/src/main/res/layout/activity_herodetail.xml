@@ -2,11 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <include layout="@layout/toolbar" />
-
     <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_dota"
+        android:id="@+id/drawer_dotadetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
         <!-- 内容界面 -->
@@ -16,18 +14,15 @@
             android:orientation="vertical"
             android:background="@drawable/dota06">
             <com.hume.gamemap.MenuClass.PagerSlidingTabStrip
-                android:id="@+id/tabs_dota"
+                android:id="@+id/tabs_dotadetail"
                 android:layout_width="match_parent"
                 android:layout_height="48dip" >
             </com.hume.gamemap.MenuClass.PagerSlidingTabStrip>
-            <com.hume.gamemap.Fragment_View.MyViewPager
-                android:id="@+id/pager_dota"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager_dotadetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-            </com.hume.gamemap.Fragment_View.MyViewPager>
+            </android.support.v4.view.ViewPager>
         </LinearLayout>
-        <!-- 侧滑菜单内容 -->
-        <include layout="@layout/layout_menu" />
     </android.support.v4.widget.DrawerLayout>
-
 </LinearLayout>

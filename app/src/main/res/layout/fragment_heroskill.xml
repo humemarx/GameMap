@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:myview="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:clipToPadding="false"
+    android:fadeScrollbars="true"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    tools:context=".HeroDetailActivity"
+    tools:ignore="NestedScrolling,HardcodedText"
+    android:id="@+id/myhero_detail_view"
+    android:background="#ff1a1a1a">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/margins_layout" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/image_hero"
+                android:layout_width="@dimen/herodetail_image_width"
+                android:layout_height="@dimen/herodetail_image_height"
+                android:layout_marginRight="@dimen/margins_base"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitStart"
+                android:src="@drawable/loading" />
+            <TextView
+                android:id="@+id/text_hero_name_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/image_hero"
+                android:text="name"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:id="@+id/text_hero_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_hero_name_l"
+                android:layout_toRightOf="@+id/image_hero"
+                android:text="name"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:id="@+id/text_hero_roles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_hero_name"
+                android:layout_toRightOf="@+id/image_hero"
+                android:text="roles"
+                android:textColor="#ffffffff" />
+
+            <TextView
+                android:id="@+id/text_hero_hp_faction_atk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_hero_roles"
+                android:layout_toRightOf="@+id/image_hero"
+                android:text="hp_faction_atk"
+                android:textColor="#ffffffff" />
+        </RelativeLayout>
+
+        <!-- ====技能==== -->
+        <LinearLayout
+            android:id="@+id/llayout_hero_abilities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_hero_abilities_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_abilities_label"
+                android:textStyle="bold"
+                android:textColor="#ffff1a57"
+                android:textSize="@dimen/abc_text_size_large_material" />
+
+            <com.hume.gamemap.Fragment_View.SimpleListView
+                android:id="@+id/list_hero_abilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </com.hume.gamemap.Fragment_View.SimpleListView>
+        </LinearLayout>
+
+        <!-- ====技能加点==== -->
+        <LinearLayout
+            android:id="@+id/llayout_hero_skillup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_hero_skillup_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_skillup_label"
+                android:textStyle="bold"
+                android:textColor="#ffff1a57"
+                android:textSize="@dimen/abc_text_size_large_material" />
+
+            <com.hume.gamemap.Fragment_View.SimpleListView
+                android:id="@+id/list_hero_skillup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </com.hume.gamemap.Fragment_View.SimpleListView>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

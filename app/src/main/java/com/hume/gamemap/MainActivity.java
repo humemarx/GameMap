@@ -1,6 +1,7 @@
 package com.hume.gamemap;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,9 +19,11 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,14 +33,20 @@ import android.widget.Toast;
 import com.hume.gamemap.Fragment_View.SuperAwesomeCardFragment;
 import com.hume.gamemap.MenuClass.PagerSlidingTabStrip;
 import com.hume.gamemap.MenuClass.SlideMenu;
+import com.hume.gamemap.cardview.CardAdapter;
+import com.hume.gamemap.cardview.CardView;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**启动主界面
  * Created by tcp on 2015/1/23.
  */
 public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuItemClickListener,View.OnClickListener{
     private SlideMenu slideMenu;
+    List<String> list;
+    private TestFragment frag;
     private ImageView dota_image,lol_image;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -54,6 +63,27 @@ public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuIte
         setContentView(R.layout.activity_game_main);
         first_color = R.drawable.dota06;
         initviews();
+        initUI();  //card_view
+    }
+
+    private void initUI() {
+        CardView cardView = (CardView) findViewById(R.id.cardView1);
+        cardView.setOnCardClickListener(new CardView.OnCardClickListener() {
+            @Override
+            public void onCardClick(final View view, final int position) {
+                Toast.makeText(MainActivity.this, position + "", Toast.LENGTH_SHORT).show();
+                Bundle bundle = new Bundle();
+                bundle.putString("text", list.get(position%list.size()));
+                frag.show(view,bundle);
+            }
+        });
+        cardView.setItemSpace(Utils.convertDpToPixelInt(this, 20));
+        MyCardAdapter adapter = new MyCardAdapter(this);
+        adapter.addAll(initData());
+        cardView.setAdapter(adapter);
+        FragmentManager manager = getSupportFragmentManager();
+        frag = new TestFragment();
+        manager.beginTransaction().add(R.id.contentView, frag).commit();
     }
 
     private void initviews() {
@@ -293,6 +323,38 @@ public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuIte
         @Override
         public Fragment getItem(int position) {
             return SuperAwesomeCardFragment.newInstance(position);
+        }
+    }
+
+    private List<String> initData() {
+        list = new ArrayList<String>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+        list.add("d");
+        list.add("e");
+        list.add("f");
+        list.add("g");
+        return list;
+    }
+    public class MyCardAdapter extends CardAdapter<String> {
+        public MyCardAdapter(Context context) {
+            super(context);
+        }
+        @Override
+        public int getCount() {
+            return Integer.MAX_VALUE;
+        }
+        @Override
+        protected View getCardView(int position,View convertView, ViewGroup parent) {
+            if(convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+                convertView = inflater.inflate(R.layout.card_item_layout, parent, false);
+            }
+            TextView tv = (TextView) convertView.findViewById(R.id.textView1);
+            String text = getItem(position%list.size());
+            tv.setText(text);
+            return convertView;
         }
     }
 }

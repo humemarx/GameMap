@@ -13,7 +13,17 @@
     </style>
 
     <style name="AppTheme" parent="@style/AppBaseTheme"></style>
+    <style name="Theme.Slidr.Slidable" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/accent</item>
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:divider">@color/divider</item>
 
+        <!-- These values must be set for this mechanism to work -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
         <!--
     Background for the search query section (e.g. EditText)

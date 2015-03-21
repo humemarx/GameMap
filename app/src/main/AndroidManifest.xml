@@ -19,9 +19,11 @@
         <activity android:name=".MainDotaActivity"
             android:label="dota主界面"></activity>
         <activity android:name=".HeroDetailActivity"
-            android:label="英雄详细界面"></activity>
+            android:label="英雄详细界面"
+            android:theme="@style/Theme.Slidr.Slidable"></activity>
         <activity android:name=".ItemsDetailActivity"
-            android:label="物品详细界面"></activity>
+            android:label="物品详细界面"
+            android:theme="@style/Theme.Slidr.Slidable"></activity>
     </application>
 
 </manifest>

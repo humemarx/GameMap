@@ -51,6 +51,7 @@ public class HeroDetailActivity extends ActionBarActivity implements Toolbar.OnM
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_herodetail);
+        Slidr.attach(this);//右滑退出
         /*数据初始化*/
         hero_keyname = this.getIntent().getStringExtra("heroitem");//获取英雄数据名称
         try {

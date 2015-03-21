@@ -48,6 +48,7 @@
     <string name="menu_removefavorite">从收藏中删除</string>
 
     <!-- view txt -->
+    <string name="card_text">面带笑容，不气馁往前冲，我愈挫愈勇！！</string>
     <string name="text_items_repice_name">合成卷轴</string>
     <string name="text_items_mana_label">魔法消耗:</string>
     <string name="text_items_cd_label">冷却时间:</string>

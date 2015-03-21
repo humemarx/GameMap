@@ -10,40 +10,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
         <!-- 内容界面 -->
+        <com.hume.gamemap.cardview.CardView
+            android:id="@+id/cardView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false">
+        </com.hume.gamemap.cardview.CardView>
         <LinearLayout
+            android:id="@+id/contentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@drawable/dota06">
-
-            <!--<com.hume.gamemap.MenuClass.PagerSlidingTabStrip-->
-                <!--android:id="@+id/tabs"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="48dip" >-->
-            <!--</com.hume.gamemap.MenuClass.PagerSlidingTabStrip>-->
-            <!--<android.support.v4.view.ViewPager-->
-                <!--android:id="@+id/pager"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" >-->
-            <!--</android.support.v4.view.ViewPager>-->
-
         </LinearLayout>
 
         <!-- 侧滑菜单内容 -->
         <include layout="@layout/layout_menu" />
-        <!--<LinearLayout-->
-            <!--android:id="@+id/drawer_view"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_gravity="start"-->
-            <!--android:background="@drawable/drawer"-->
-            <!--android:orientation="vertical"-->
-            <!--android:padding="8dp" >-->
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" />-->
-        <!--</LinearLayout>-->
-
     </android.support.v4.widget.DrawerLayout>
 
 </LinearLayout>

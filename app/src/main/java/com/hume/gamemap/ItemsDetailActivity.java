@@ -41,6 +41,7 @@ public class ItemsDetailActivity extends ActionBarActivity{
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itemdetail);
+        Slidr.attach(this);//右滑退出
         /*数据初始化*/
         item_keyname = this.getIntent().getStringExtra(KEY_ITEMS_DETAIL_KEY_NAME);//获取物品数据名称
         item_parentname = this.getIntent().getStringExtra(KEY_ITEMS_DETAIL_PARENT_KEY_NAME);//父物品名称

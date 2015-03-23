@@ -21,8 +21,7 @@ public class TestFragment extends Fragment{
 	private View view;
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater,
-			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater,@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		root = inflater.inflate(R.layout.card_frag_layout, container,false);
 		initUI(root);
 		return root;
@@ -62,17 +61,10 @@ public class TestFragment extends Fragment{
 		ViewHelper.setRotationY(root, -90);
 		root.setVisibility(View.VISIBLE);
 		
-		ViewPropertyAnimator.animate(view).rotationY(90)
-		.setDuration(300).setListener(null)
-		.setInterpolator(new AccelerateInterpolator());
-		
-		
-		ViewPropertyAnimator.animate(root)
-		.rotationY(0).setDuration(200).setStartDelay(300)
-		.setListener(new AnimatorListenerAdapter() {
+		ViewPropertyAnimator.animate(view).rotationY(90).setDuration(300).setListener(null).setInterpolator(new AccelerateInterpolator());
+		ViewPropertyAnimator.animate(root).rotationY(0).setDuration(200).setStartDelay(300).setListener(new AnimatorListenerAdapter() {
 			@Override
-			public void onAnimationEnd(Animator animation) {
-				ViewHelper.setRotationY(view, 0);
+			public void onAnimationEnd(Animator animation) {ViewHelper.setRotationY(view, 0);
 			}
 		});
 	}

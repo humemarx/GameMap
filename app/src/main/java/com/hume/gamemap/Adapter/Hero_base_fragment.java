@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hume.gamemap.DataManager;
+import com.hume.gamemap.Fragment_View.SimpleGridView;
+import com.hume.gamemap.Fragment_View.SimpleListView;
 import com.hume.gamemap.R;
 import com.hume.gamemap.Utils;
 
@@ -18,6 +20,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**英雄基本介绍界面
  * Created by tcp on 2015/1/26.
@@ -45,16 +48,16 @@ public class Hero_base_fragment{
     private TextView text_hero_bio,text_hero_shiye,text_hero_dandao,text_hero_dansudu;
     private TextView text_hero_ms,text_hero_dmg,text_hero_armor,text_lv_fu,text_lv_jia;
     private ImageView image_prime,image_hero;
-
     private String hero_nickname,hero_role,hero_att,hero_faction;
+
     private Bitmap bitmap;
     public Hero_base_fragment(Context mcontext,LayoutInflater inflater,String keyname){
-        this.mView = inflater.inflate(R.layout.fragment_herodetail, null);//载入基本介绍界面布局;
+        this.mView = inflater.inflate(R.layout.activity_herodetail, null);//载入基本介绍界面布局;
         this.mcontext = mcontext;
         this.hero_keyname = keyname;
     }
 
-    public View setContextview(){
+    public void setContextview(){
         try {
             herodata = DataManager.getHeroDetailItem(mcontext,hero_keyname);//获取详细信息
             herolist = DataManager.getHeroItem(mcontext,hero_keyname);//获取基本信息
@@ -123,7 +126,34 @@ public class Hero_base_fragment{
         });
         dota_lv_up(level_hero);//获取属性值
         dota_lv_stats();//属性设置
-        return mView;
+
+        // 绑定视图——技能
+        if (herodata.abilities != null && herodata.abilities.size() > 0) {
+            final HeroAbilitiesAdapter adapter = new HeroAbilitiesAdapter(mcontext, herodata.abilities,herolist);
+            final SimpleListView list = Utils.findById(mView, R.id.list_hero_abilities);
+            list.setAdapter(adapter);
+            // list.setOnItemClickListener(this);
+        }
+        else {
+            mView.findViewById(R.id.llayout_hero_abilities).setVisibility(View.GONE);
+        }
+
+        // 绑定视图——技能加点
+        if (herodata.skillup != null && herodata.skillup.size() > 0) {
+            final HeroSkillupAdapter adapter = new HeroSkillupAdapter(mcontext, herodata.skillup);
+            final SimpleListView list = Utils.findById(mView, R.id.list_hero_skillup);
+            list.setAdapter(adapter);
+            // list.setOnItemClickListener(this);
+        }
+        else {
+            mView.findViewById(R.id.llayout_hero_skillup).setVisibility(View.GONE);
+        }
+        /* 出装推荐视图绑定 */
+        bindItembuildsItems(mView, herodata, "Starting",R.id.llayout_hero_itembuilds_starting,R.id.grid_hero_itembuilds_starting);
+        bindItembuildsItems(mView, herodata, "Early",R.id.llayout_hero_itembuilds_early,R.id.grid_hero_itembuilds_early);
+        bindItembuildsItems(mView, herodata, "Core",R.id.llayout_hero_itembuilds_core,R.id.grid_hero_itembuilds_core);
+        bindItembuildsItems(mView, herodata, "Luxury",R.id.llayout_hero_itembuilds_luxury,R.id.grid_hero_itembuilds_luxury);
+        //return mView;
     }
     /**
      * 初始化界面控件
@@ -235,6 +265,40 @@ public class Hero_base_fragment{
                 break;
             default:
                 break;
+        }
+    }
+    /**
+     * 绑定视图——推荐出装
+     * @param cView
+     * cview
+     * @param cItem
+     * cItem
+     * @param cItembuildsKey
+     * cItembuildsKey
+     * @param layoutResId
+     * layoutResId
+     * @param itemsGridResId
+     * itemsGridResId
+     */
+    private void bindItembuildsItems(View cView, HeroDetailItem cItem,String cItembuildsKey,int layoutResId, int itemsGridResId) {
+        if(cItem.itembuilds != null && cItem.itembuilds.size() > 0)
+        {
+            final ArrayList<ItemsItem> cItembuilds = new ArrayList<>();
+            final String[] cItemsb = cItem.itembuilds.get(cItembuildsKey);
+            for (String aCItemsb : cItemsb) {
+                ItemsItem itemsItem = null;
+                try {
+                    itemsItem = DataManager.getItemsItem(mcontext, aCItemsb);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+                cItembuilds.add(itemsItem);
+            }
+            final ItemsImagesAdapter adapter = new ItemsImagesAdapter(mcontext, cItembuilds);
+            final SimpleGridView gridview = (SimpleGridView)cView.findViewById(itemsGridResId);
+            gridview.setAdapter(adapter);
+//            gridview.setOnItemClickListener(this);//设置监听
+            cView.findViewById(layoutResId).setVisibility(View.VISIBLE);
         }
     }
     /**

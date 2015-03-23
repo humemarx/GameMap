@@ -34,7 +34,7 @@ public abstract class CardAdapter<T> extends BaseCardAdapter {
 		View convertedCardView;
 		if (wrapper == null) {
 			wrapper = new FrameLayout(mContext);
-			wrapper.setBackgroundResource(R.drawable.dota06);
+			wrapper.setBackgroundResource(R.drawable.dota05);
 			cardView = getCardView(position, null, wrapper);
 			wrapper.addView(cardView);
 		} else {

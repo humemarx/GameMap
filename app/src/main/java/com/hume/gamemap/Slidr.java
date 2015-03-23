@@ -139,7 +139,6 @@ public class Slidr {
             @Override
             public void onSlideChange(float percent) {
                 // Interpolate the statusbar color
-                // TODO: Add support for KitKat
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
                         config.areStatusBarColorsValid()){
 

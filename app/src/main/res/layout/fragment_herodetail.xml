@@ -475,5 +475,160 @@
             android:text="bio"
             android:textColor="#ffffffff"
             android:background="#ff1a1a1a" />
+        <!-- ====技能==== -->
+        <LinearLayout
+            android:id="@+id/llayout_hero_abilities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_hero_abilities_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_abilities_label"
+                android:textStyle="bold"
+                android:textColor="#ffff1a57"
+                android:textSize="@dimen/abc_text_size_large_material" />
+
+            <com.hume.gamemap.Fragment_View.SimpleListView
+                android:id="@+id/list_hero_abilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </com.hume.gamemap.Fragment_View.SimpleListView>
+        </LinearLayout>
+
+        <!-- ====技能加点==== -->
+        <LinearLayout
+            android:id="@+id/llayout_hero_skillup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_hero_skillup_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_skillup_label"
+                android:textStyle="bold"
+                android:textColor="#ffff1a57"
+                android:textSize="@dimen/abc_text_size_large_material" />
+
+            <com.hume.gamemap.Fragment_View.SimpleListView
+                android:id="@+id/list_hero_skillup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </com.hume.gamemap.Fragment_View.SimpleListView>
+        </LinearLayout>
+        <!-- ====出装==== -->
+        <!--出门装-->
+        <LinearLayout
+            android:id="@+id/llayout_hero_itembuilds_starting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:visibility="gone" >
+            <TextView
+                android:id="@+id/text_hero_itembuilds_starting_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_itembuilds_starting_label"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:textColor="#ffff1a57" />
+            <com.hume.gamemap.Fragment_View.SimpleGridView
+                android:id="@+id/grid_hero_itembuilds_starting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="@dimen/margins_base"
+                android:verticalSpacing="@dimen/margins_base" >
+            </com.hume.gamemap.Fragment_View.SimpleGridView>
+        </LinearLayout>
+
+        <!--前期装-->
+        <LinearLayout
+            android:id="@+id/llayout_hero_itembuilds_early"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:visibility="gone" >
+            <TextView
+                android:id="@+id/text_hero_itembuilds_early_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_itembuilds_early_label"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:textColor="#ffff1a57"/>
+            <com.hume.gamemap.Fragment_View.SimpleGridView
+                android:id="@+id/grid_hero_itembuilds_early"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="@dimen/margins_base"
+                android:verticalSpacing="@dimen/margins_base" >
+            </com.hume.gamemap.Fragment_View.SimpleGridView>
+        </LinearLayout>
+
+        <!--中期装-->
+        <LinearLayout
+            android:id="@+id/llayout_hero_itembuilds_core"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:visibility="gone" >
+            <TextView
+                android:id="@+id/text_hero_itembuilds_core_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_itembuilds_core_label"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:textColor="#ffff1a57"/>
+            <com.hume.gamemap.Fragment_View.SimpleGridView
+                android:id="@+id/grid_hero_itembuilds_core"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="@dimen/margins_base"
+                android:verticalSpacing="@dimen/margins_base" >
+            </com.hume.gamemap.Fragment_View.SimpleGridView>
+        </LinearLayout>
+
+        <!--六神装-->
+        <LinearLayout
+            android:id="@+id/llayout_hero_itembuilds_luxury"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margins_base"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            android:visibility="gone" >
+            <TextView
+                android:id="@+id/text_hero_itembuilds_luxury_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_hero_itembuilds_luxury_label"
+                android:textStyle="bold"
+                android:textSize="@dimen/abc_text_size_large_material"
+                android:textColor="#ffff1a57"/>
+            <com.hume.gamemap.Fragment_View.SimpleGridView
+                android:id="@+id/grid_hero_itembuilds_luxury"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="@dimen/margins_base"
+                android:verticalSpacing="@dimen/margins_base" >
+            </com.hume.gamemap.Fragment_View.SimpleGridView>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

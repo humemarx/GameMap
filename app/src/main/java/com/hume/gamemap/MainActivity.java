@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity implements Toolbar.OnMenuIte
                 frag.show(view,bundle);
             }
         });
-        cardView.setItemSpace(Utils.convertDpToPixelInt(this, 20));
+        cardView.setItemSpace(Utils.convertDpToPixelInt(this, 50));
         MyCardAdapter adapter = new MyCardAdapter(this);
         adapter.addAll(initData());
         cardView.setAdapter(adapter);

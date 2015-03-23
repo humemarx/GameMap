@@ -78,7 +78,7 @@ public class SliderPanel extends FrameLayout {
     /**
      * Initialize the slider panel
      *
-     * TODO: Based on SlidrPosition configure the ViewDragHelper to the appropriate position.
+     *
      *
      */
     private void init(){
